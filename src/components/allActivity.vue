@@ -29,10 +29,6 @@
       prop="content"
       label="活动内容">
     </el-table-column>
-<el-table-column
-      prop="teacher"
-      label="活动导师">
-    </el-table-column>
 <el-table-column label="操作" width="180px">
           <template >
             <!-- 修改按钮 -->

@@ -7,6 +7,7 @@ import allActivity from '../components/allActivity.vue'
 import userModify from '../components/userModify.vue'
 import userRegister from '../components/userRegister.vue'
 import launchActivityCheckIn from '../components/teacher/launchActivityCheckIn.vue'
+import activityInfo from '../components/teacher/activityInfo.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,7 +22,8 @@ const routes = [
       { path: '/welcome', component: Welcome },
       { path: '/allActivity', component: allActivity },
       { path: '/userModify', component: userModify },
-      { path: '/launchActivityCheckIn', component: launchActivityCheckIn }
+      { path: '/launchActivityCheckIn', component: launchActivityCheckIn },
+      { path: '/toActivityInfo', component: activityInfo }
     ]
   },
 ]

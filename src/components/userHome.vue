@@ -18,7 +18,7 @@
           text-color="#fff"
           active-text-color="#409EFF"
           unique-opened
-          router="true"
+          :router="true"
         >
           <!-- 一级菜单 -->
           <el-menu-item index="/allActivity">

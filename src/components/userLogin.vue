@@ -32,11 +32,11 @@
             v-model="loginForm.usertype"
             placeholder="请选择用户类型"
           >
-            <el-option label="学员" value="student"></el-option>
-            <el-option label="经理" value="manager"></el-option>
-            <el-option label="导师" value="mentor"></el-option>
-            <el-option label="工作人员" value="staff"></el-option>
-            <el-option label="活动组织者" value="organizer"></el-option>
+            <el-option label="学员" value="1">学员</el-option>
+            <el-option label="导师" value="2">导师</el-option>
+            <el-option label="活动组织者" value="3">活动组织者</el-option>
+            <el-option label="工作人员" value="4">工作人员</el-option>
+            <el-option label="经理" value="5">经理</el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -57,8 +57,8 @@ export default {
   data () {
     return {
       loginForm: {
-        username: '',
-        password: '',
+        username: 'abcd',
+        password: 'abcdefg',
         usertype: ''
       },
       // 校验规则
@@ -89,6 +89,7 @@ export default {
           Message.success('登录成功')
           // 未来得到token，保存到session中
           window.sessionStorage.setItem('token', 'token')
+          window.sessionStorage.setItem('userRole', this.loginForm.usertype)
           // 清除token
           this.$router.push('/home')
         } else {

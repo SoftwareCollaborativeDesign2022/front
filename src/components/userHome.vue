@@ -25,6 +25,14 @@
             <i class="el-icon-menu"></i>
             <span slot="title">活动</span>
           </el-menu-item>
+
+          <!-- 导师： 活动签到、活动抢单 -->
+          <el-menu-item v-show="canSee" index="/launchActivityCheckIn">
+            <i class="el-icon-s-check"></i>
+            <span slot="title">活动签到</span>
+          </el-menu-item>
+
+          <!-- 修改信息 -->
           <el-menu-item index="/userModify">
             <i class="el-icon-setting"></i>
             <span slot="title">修改信息</span>
@@ -41,17 +49,32 @@
 </template>
 <script>
 export default {
-  data () {
-    return {}
+  data() {
+    return {
+      userRole: "",
+      canSee: "",
+    };
   },
 
   methods: {
-    logout () {
-      window.sessionStorage.clear()
-      this.$router.push('/login')
-    }
-  }
-}
+    logout() {
+      window.sessionStorage.clear();
+      this.$router.push("/login");
+    },
+    itemDisplay() {
+      if (parseInt(this.userRole) != 2) {
+        this.canSee = false;
+      } else {
+        this.canSee = true;
+      }
+    },
+  },
+
+  mounted() {
+    this.userRole = window.sessionStorage.getItem("userRole");
+    this.itemDisplay();
+  },
+};
 </script>
 
 <style  scoped>
@@ -67,12 +90,10 @@ export default {
   align-items: center;
   color: #fff;
   font-size: 20px;
-
 }
 
 .el-aside {
   background-color: #333744;
-
 }
 
 .el-main {

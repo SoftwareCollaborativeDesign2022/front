@@ -6,6 +6,7 @@ import Welcome from '../components/userWelcome.vue'
 import allActivity from '../components/allActivity.vue'
 import userModify from '../components/userModify.vue'
 import userRegister from '../components/userRegister.vue'
+import launchActivityCheckIn from '../components/teacher/launchActivityCheckIn.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,9 +20,10 @@ const routes = [
     children: [
       { path: '/welcome', component: Welcome },
       { path: '/allActivity', component: allActivity },
-      { path: '/userModify', component: userModify }
+      { path: '/userModify', component: userModify },
+      { path: '/launchActivityCheckIn', component: launchActivityCheckIn }
     ]
-  }
+  },
 ]
 
 const router = new VueRouter({

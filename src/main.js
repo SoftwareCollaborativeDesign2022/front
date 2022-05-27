@@ -6,7 +6,8 @@ import axios from 'axios'
 import './assets/css/global.css'
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
-// axios.defaults.baseURL =
+// 请求根路径
+axios.defaults.baseURL = "/api"
 // 全局挂载弹窗
 new Vue({
   router,

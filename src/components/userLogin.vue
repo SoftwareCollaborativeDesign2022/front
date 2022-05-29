@@ -27,18 +27,6 @@
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="用户类型" prop="usertype">
-          <el-select
-            v-model="loginForm.usertype"
-            placeholder="请选择用户类型"
-          >
-            <el-option label="学员" value="1">学员</el-option>
-            <el-option label="导师" value="2">导师</el-option>
-            <el-option label="活动组织者" value="3">活动组织者</el-option>
-            <el-option label="工作人员" value="4">工作人员</el-option>
-            <el-option label="经理" value="5">经理</el-option>
-          </el-select>
-        </el-form-item>
         <el-form-item>
           <div style="color: #333">
             没有账号？ <router-link to="/register">立即注册</router-link>
@@ -52,53 +40,85 @@
   </div>
 </template>
 <script>
-import { Message } from 'element-ui'
+import { Message } from "element-ui";
+import router from '@/router';
 export default {
-  data () {
+  data() {
     return {
       loginForm: {
-        username: 'abcd',
-        password: 'abcdefg',
-        usertype: ''
+        username: "111111",
+        password: "111111",
       },
       // 校验规则
       rules: {
         username: [
-          { required: 'true', message: '账号不能为空', trigger: 'blur' },
-          { min: 3, max: 6, message: '长度在 3 到 6 个字符', trigger: 'blur' }
+          { required: "true", message: "账号不能为空", trigger: "blur" },
+          { min: 3, max: 6, message: "长度在 3 到 6 个字符", trigger: "blur" },
         ],
         password: [
-          { required: 'true', message: '密码不能为空', trigger: 'blur' },
+          { required: "true", message: "密码不能为空", trigger: "blur" },
           {
             min: 6,
             max: 10,
-            message: '密码长度在 6 到 10 个字符',
-            trigger: 'blur'
-          }
+            message: "密码长度在 6 到 10 个字符",
+            trigger: "blur",
+          },
         ],
-        usertype: [
-          { required: true, message: '请选择用户类型', trigger: 'change' }
-        ]
+      },
+    };
+  },
+  methods: {
+    login() {
+      this.$refs.loginFormRef.validate((valid) => {
+        if (valid) {
+          var param = {};
+          param.loginAccount = this.loginForm.username;
+          param.password = this.loginForm.password;
+          this.$http({
+            headers: {
+              "Content-Type": "application/json;charset=UTF-8",
+            },
+            dataType: "JSON",
+            method: "post",
+            url: "/auth/login",
+            data: param,
+          }).then((res) => {
+            if (res.data.code == 200) {
+              // 未来得到token，保存到session中
+              window.sessionStorage.setItem("token", res.data.data.token);
+              window.sessionStorage.setItem("userRole", this.getRole(res.data.data.authorities[0].authority));
+              window.sessionStorage.setItem('username', this.loginForm.username)
+              // 清除token
+              Message.success("登录成功");
+              this.$router.push("/home");
+            } else {
+              Message.error(res.data.msg);
+            }
+          }).catch(
+            err => {
+              Message.error("用户名或密码错误")
+            }
+          )
+        } else {
+          Message.error("登录失败");
+        }
+      });
+    },
+    getRole(roleStr){
+      if(roleStr == '导师'){
+        return 2
+      }else if(roleStr == '学员'){
+        return 1
+      }else if(roleStr == '活动组织者'){
+        return 3
+      }else if(roleStr == '工作人员'){
+        return 4
+      }else if(roleStr == '经理'){
+        return 5
       }
     }
   },
-  methods: {
-    login () {
-      this.$refs.loginFormRef.validate(valid => {
-        if (valid) {
-          Message.success('登录成功')
-          // 未来得到token，保存到session中
-          window.sessionStorage.setItem('token', 'token')
-          window.sessionStorage.setItem('userRole', this.loginForm.usertype)
-          // 清除token
-          this.$router.push('/home')
-        } else {
-          Message.error('登录失败')
-        }
-      })
-    }
-  }
-}
+};
 </script>
 
 <style scoped>

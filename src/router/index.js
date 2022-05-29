@@ -8,6 +8,9 @@ import userModify from '../components/userModify.vue'
 import userRegister from '../components/userRegister.vue'
 import launchActivityCheckIn from '../components/teacher/launchActivityCheckIn.vue'
 import activityInfo from '../components/teacher/activityInfo.vue'
+import toBeTeacher from '../components/student/toBeTeacher.vue'
+import activityInfoForSignUp from '../components/activityInfoForSignUp.vue'
+import activityInfoForTeacher from '../components/teacher/activityInfo.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,7 +26,10 @@ const routes = [
       { path: '/allActivity', component: allActivity },
       { path: '/userModify', component: userModify },
       { path: '/launchActivityCheckIn', component: launchActivityCheckIn },
-      { path: '/toActivityInfo', component: activityInfo }
+      { path: '/toActivityInfo', component: activityInfo },
+      { path: '/toBeTeacher', component: toBeTeacher},
+      { path: '/activityInfoForSignUp', component: activityInfoForSignUp},
+      { path: '/activityInfoForTeacher', component: activityInfoForTeacher},
     ]
   },
 ]

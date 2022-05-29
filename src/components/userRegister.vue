@@ -35,20 +35,12 @@
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="用户类型" prop="usertype">
-          <el-select v-model="loginForm.usertype" placeholder="请选择用户类型">
-            <el-option label="学员" value="student"></el-option>
-            <el-option label="经理" value="manager"></el-option>
-            <el-option label="导师" value="mentor"></el-option>
-            <el-option label="工作人员" value="staff"></el-option>
-            <el-option label="活动组织者" value="organizer"></el-option>
-          </el-select>
-        </el-form-item>
         <el-form-item>
           <el-button style="width: 100%" type="primary" @click="register"
-            >注册</el-button
-          >
+            >注册</el-button>
         </el-form-item>
+        <el-button style="width: 100%" type="info" @click="goBack"
+            >返回</el-button>
       </el-form>
     </div>
   </div>
@@ -80,7 +72,6 @@ export default {
     return {
       loginForm: {
         username: "222222",
-        usertype: "",
         newpassword: "222222",
         twonewpassword: "222222",
       },
@@ -101,9 +92,6 @@ export default {
           },
         ],
         twonewpassword: [{ validator: validatePass2, trigger: "blur" }],
-        usertype: [
-          { required: true, message: "请选择用户类型", trigger: "change" },
-        ],
       },
     };
   },
@@ -123,18 +111,25 @@ export default {
             dataType: "JSON",
             method: "post",
             url: "/auth/register",
-            data: param
+            data: param,
           }).then((res) => {
             console.log(res.data);
-          })
-          //Message.success('注册成功')
-          // 跳转到登录页面
-          this.$router.push("/login");
+            if (res.data.code === 200) {
+              Message.success("注册成功");
+              // 跳转到登录页面
+              this.$router.push("/login");
+            } else {
+              Message.error("注册失败");
+            }
+          });
         } else {
           Message.error("登录失败");
         }
       });
     },
+    goBack(){
+      window.history.back()
+    }
   },
 };
 </script>

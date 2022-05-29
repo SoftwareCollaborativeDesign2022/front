@@ -37,6 +37,12 @@
             <i class="el-icon-setting"></i>
             <span slot="title">修改信息</span>
           </el-menu-item>
+
+          <!-- 成为导师 -->
+          <el-menu-item index="/toBeTeacher" v-show="canStudent">
+            <i class="el-icon-setting"></i>
+            <span slot="title">成为导师</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <!-- 右侧内容主体 -->
@@ -53,6 +59,7 @@ export default {
     return {
       userRole: "",
       canSee: "",
+      canStudent: false,
     };
   },
 
@@ -67,6 +74,11 @@ export default {
       } else {
         this.canSee = true;
       }
+
+      if(parseInt(this.userRole) == 1){
+        this.canStudent = true;
+      }
+
     },
   },
 

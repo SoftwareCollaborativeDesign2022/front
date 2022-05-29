@@ -104,16 +104,26 @@ export default {
             cancelButtonText: '取消',
             type: 'warning'
           }).then(() => {
-            this.$message({
-              type: 'success',
-              message: '修改成功!'
-            })
-            this.$router.push('/login')
-          }).catch(() => {
-            this.$message({
-              type: 'info',
-              message: '已取消删除'
-            })
+            var param = {};
+            param.oldPassword = this.loginForm.password;
+            param.newPassword = this.loginForm.newpassword;
+            this.$http({
+            headers: {
+              "Content-Type": "application/json;charset=UTF-8",
+            },
+            dataType: "JSON",
+            method: "post",
+            url: "/user/changepassword",
+            data: param,
+          }).then((res) => {
+            if(res.data.success){
+              Message.success("修改成功")
+              this.$router.push("/login")
+              return
+            }
+            Message.error("修改失败")
+          })
+
           })
         } else {
           Message.error('填写信息有误，请重新填写')

@@ -65,7 +65,6 @@ export default {
 
   methods: {
     toActivityInfo(row) {
-      console.log(row.id);
       let routeInfo = this.$router.resolve({
         path: "/toActivityInfo",
         query: { aid: row.id },

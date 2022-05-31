@@ -50,8 +50,14 @@
             <span slot="title">申请活动</span>
           </el-menu-item>
 
-          <!-- 审核活动 -->
+          <!-- 审核活动 工作人员 -->
           <el-menu-item index="/staffCheck" v-show="canWorkers">
+            <i class="el-icon-setting"></i>
+            <span slot="title">审核活动</span>
+          </el-menu-item>
+
+          <!-- 审核活动 经理 -->
+          <el-menu-item index="/managerCheck" v-show="canManager">
             <i class="el-icon-setting"></i>
             <span slot="title">审核活动</span>
           </el-menu-item>

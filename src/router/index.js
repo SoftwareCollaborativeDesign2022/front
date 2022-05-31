@@ -14,6 +14,8 @@ import activityInfoForTeacher from '../components/teacher/activityInfo.vue'
 import createAct from '../components/organization/createAct.vue'
 import staffCheck from '../components/staff/staffCheck.vue'
 import checkOfStaff from '../components/staff/check.vue'
+import managerCheck from '../components/manager/managerCheck.vue'
+import managerPassActivityView from '../components/manager/managerPassActivityView.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -36,6 +38,8 @@ const routes = [
       { path: '/createAct', component: createAct},
       { path: '/staffCheck', component: staffCheck},
       { path: '/checkOfStaff', component: checkOfStaff},
+      { path: '/managerCheck', component: managerCheck},
+      { path: '/managerPassActivityView', component: managerPassActivityView},
     ]
   },
 ]

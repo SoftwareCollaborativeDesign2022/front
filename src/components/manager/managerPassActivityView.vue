@@ -66,7 +66,7 @@ export default {
         let param = new URLSearchParams()
         param.append("id", this.id)
         this.$http({
-            url: 'activity/staffPass',
+            url: '/activity/managerPass',
             method: 'post',
             data: param
         }).then((res) => {

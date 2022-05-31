@@ -12,6 +12,8 @@ import toBeTeacher from '../components/student/toBeTeacher.vue'
 import activityInfoForSignUp from '../components/activityInfoForSignUp.vue'
 import activityInfoForTeacher from '../components/teacher/activityInfo.vue'
 import createAct from '../components/organization/createAct.vue'
+import staffCheck from '../components/staff/staffCheck.vue'
+import checkOfStaff from '../components/staff/check.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -31,7 +33,9 @@ const routes = [
       { path: '/toBeTeacher', component: toBeTeacher},
       { path: '/activityInfoForSignUp', component: activityInfoForSignUp},
       { path: '/activityInfoForTeacher', component: activityInfoForTeacher},
-      { path: '/createAct', component: createAct}
+      { path: '/createAct', component: createAct},
+      { path: '/staffCheck', component: staffCheck},
+      { path: '/checkOfStaff', component: checkOfStaff},
     ]
   },
 ]

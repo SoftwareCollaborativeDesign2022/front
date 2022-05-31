@@ -50,8 +50,8 @@
             <span slot="title">申请活动</span>
           </el-menu-item>
 
-          <!-- 活动申请（活动） -->
-          <el-menu-item index="/managerCheck" v-show="canManager">
+          <!-- 审核活动 -->
+          <el-menu-item index="/staffCheck" v-show="canWorkers">
             <i class="el-icon-setting"></i>
             <span slot="title">审核活动</span>
           </el-menu-item>
@@ -73,6 +73,7 @@ export default {
       canSee: "",
       canStudent: false,
       canorg: false,
+      canWorkers: false,
       canManager: false,
     };
   },
@@ -95,6 +96,10 @@ export default {
 
       if(parseInt(this.userRole) == 3){
         this.canorg = true;
+      }
+
+      if(parseInt(this.userRole) == 4){
+        this.canWorkers = true;
       }
 
       if(parseInt(this.userRole) == 5){

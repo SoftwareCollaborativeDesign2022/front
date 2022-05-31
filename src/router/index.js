@@ -6,11 +6,12 @@ import Welcome from '../components/userWelcome.vue'
 import allActivity from '../components/allActivity.vue'
 import userModify from '../components/userModify.vue'
 import userRegister from '../components/userRegister.vue'
-import launchActivityCheckIn from '../components/teacher/launchActivityCheckIn.vue'
+import teacherActivityList from '../components/teacher/teacherActivityList.vue'
 import activityInfo from '../components/teacher/activityInfo.vue'
 import toBeTeacher from '../components/student/toBeTeacher.vue'
 import activityInfoForSignUp from '../components/activityInfoForSignUp.vue'
 import activityInfoForTeacher from '../components/teacher/activityInfo.vue'
+import createAct from '../components/organization/createAct.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,11 +26,12 @@ const routes = [
       { path: '/welcome', component: Welcome },
       { path: '/allActivity', component: allActivity },
       { path: '/userModify', component: userModify },
-      { path: '/launchActivityCheckIn', component: launchActivityCheckIn },
+      { path: '/teacherActivityList', component: teacherActivityList },
       { path: '/toActivityInfo', component: activityInfo },
       { path: '/toBeTeacher', component: toBeTeacher},
       { path: '/activityInfoForSignUp', component: activityInfoForSignUp},
       { path: '/activityInfoForTeacher', component: activityInfoForTeacher},
+      { path: '/createAct', component: createAct}
     ]
   },
 ]

@@ -37,7 +37,6 @@
     </el-form-item>
     <el-form-item size="large" align="center">
       <el-button type="primary">申请成为导师</el-button>
-      <el-button type="danger">结束活动</el-button>
       <el-button type="info" @click="goBack">返&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回</el-button>
     </el-form-item>
   </el-form>

@@ -27,9 +27,9 @@
           </el-menu-item>
 
           <!-- 导师： 活动签到、活动抢单 -->
-          <el-menu-item v-show="canSee" index="/launchActivityCheckIn">
+          <el-menu-item v-show="canSee" index="/teacherActivityList">
             <i class="el-icon-s-check"></i>
-            <span slot="title">活动签到</span>
+            <span slot="title">我的活动</span>
           </el-menu-item>
 
           <!-- 修改信息 -->
@@ -42,6 +42,18 @@
           <el-menu-item index="/toBeTeacher" v-show="canStudent">
             <i class="el-icon-setting"></i>
             <span slot="title">成为导师</span>
+          </el-menu-item>
+
+          <!-- 活动申请（活动） -->
+          <el-menu-item index="/createAct" v-show="canorg">
+            <i class="el-icon-setting"></i>
+            <span slot="title">申请活动</span>
+          </el-menu-item>
+
+          <!-- 活动申请（活动） -->
+          <el-menu-item index="/managerCheck" v-show="canManager">
+            <i class="el-icon-setting"></i>
+            <span slot="title">审核活动</span>
           </el-menu-item>
         </el-menu>
       </el-aside>
@@ -60,6 +72,8 @@ export default {
       userRole: "",
       canSee: "",
       canStudent: false,
+      canorg: false,
+      canManager: false,
     };
   },
 
@@ -77,6 +91,14 @@ export default {
 
       if(parseInt(this.userRole) == 1){
         this.canStudent = true;
+      }
+
+      if(parseInt(this.userRole) == 3){
+        this.canorg = true;
+      }
+
+      if(parseInt(this.userRole) == 5){
+        this.canManager = true;
       }
 
     },

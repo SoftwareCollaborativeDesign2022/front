@@ -13,27 +13,6 @@
     <el-form-item label="活动简介">
       <el-input v-model="sizeForm.description" :disabled="true"></el-input>
     </el-form-item>
-    <el-form-item label="活动时间">
-      <el-col :span="11">
-        <el-date-picker
-          type="date"
-          placeholder=""
-          v-model="sizeForm.date1"
-          style="width: 100%"
-          :disabled="true"
-        ></el-date-picker>
-      </el-col>
-      <el-col class="line" :span="2">-</el-col>
-      <el-col :span="11">
-        <el-date-picker
-          type="date"
-          placeholder=""
-          v-model="sizeForm.date2"
-          style="width: 100%"
-          :disabled="true"
-        ></el-date-picker>
-      </el-col>
-    </el-form-item>
     <el-form-item size="large" align="center">
       <el-button type="primary" @click="sigUp">申请报名</el-button>
       <el-button type="info" @click="goBack"
@@ -51,8 +30,6 @@ export default {
       sizeForm: {
         name: "",
         description: "",
-        date1: "",
-        date2: "",
         delivery: false,
         type: [],
         resource: "",

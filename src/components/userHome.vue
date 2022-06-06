@@ -61,6 +61,12 @@
             <i class="el-icon-setting"></i>
             <span slot="title">审核活动</span>
           </el-menu-item>
+
+          <!-- 审核活动 经理 -->
+          <el-menu-item index="/addAccount" v-show="canManager">
+            <i class="el-icon-setting"></i>
+            <span slot="title">添加账号</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <!-- 右侧内容主体 -->

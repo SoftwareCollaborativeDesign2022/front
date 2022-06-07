@@ -80,9 +80,9 @@ export default {
     };
     return {
       loginForm: {
-        username: "222222",
-        newpassword: "222222",
-        twonewpassword: "222222",
+        username: "",
+        newpassword: "",
+        twonewpassword: "",
         role: ''
       },
 
@@ -131,7 +131,6 @@ export default {
             console.log(res.data);
             if (res.data.code === 200) {
               Message.success(res.data.msg);
-              // 跳转到登录页面
             } else {
               Message.error(res.data.msg);
             }

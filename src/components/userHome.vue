@@ -21,9 +21,15 @@
           :router="true"
         >
           <!-- 一级菜单 -->
-          <el-menu-item index="/allActivity">
+          <el-menu-item index="/allActivity" v-show="canStudent">
             <i class="el-icon-menu"></i>
             <span slot="title">活动</span>
+          </el-menu-item>
+
+          <!-- 一级菜单 -->
+          <el-menu-item index="/allActivityOfTeacher" v-show="TeacherAndMore">
+            <i class="el-icon-menu"></i>
+            <span slot="title">所有活动</span>
           </el-menu-item>
 
           <!-- 导师： 活动签到、活动抢单 -->
@@ -86,6 +92,7 @@ export default {
       canStudent: false,
       canorg: false,
       canWorkers: false,
+      TeacherAndMore: false,
       canManager: false,
     };
   },
@@ -104,6 +111,10 @@ export default {
 
       if(parseInt(this.userRole) == 1){
         this.canStudent = true;
+      }
+
+      if(parseInt(this.userRole) > 1){
+        this.TeacherAndMore = true;
       }
 
       if(parseInt(this.userRole) == 3){
